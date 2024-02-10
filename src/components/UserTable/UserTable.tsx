@@ -1,18 +1,23 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
 
 interface UserTableProps {
   users?: [];
 }
 
 const UserTable: React.FC<UserTableProps> = ({ users }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   return (
     <>
       <div className="relative rounded-lg overflow-x-auto shadow-md sm:rounded-lg">
         <div className="pt-2.5 px-5 flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
           <div>
-            <Button type="light">დამატება</Button>
-            
+            <Button onClick={() => setIsModalOpen(true)} type="light">
+              დამატება
+            </Button>
           </div>
           <label className="sr-only">Search</label>
           <div className="relative  ml-3">
@@ -127,6 +132,8 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
           </tbody>
         </table>
       </div>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}></Modal>
     </>
   );
 };
