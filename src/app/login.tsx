@@ -5,10 +5,6 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { GoPerson } from "react-icons/go";
 
-const font = Noto_Sans_Georgian({
-  subsets: ["latin"],
-//   weight: "700",
-});
 export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const formik = useFormik({
@@ -25,16 +21,13 @@ export default function LogIn() {
     <main className="md:px-0 px-2">
       <header className="h-[72px] p-6 flex md:justify-between justify-center items-center">
         <a href="/">
-          {" "}
           <h1 className="text-lg font-700 font-bold">MY.GOV.GE</h1>
         </a>
         <h3 className="text-sm font-normal hidden md:flex	">დახმარება</h3>
       </header>
       <div
         className={
-          "flex flex-col items-center justify-center md:px-6 py-8 mx-auto mt-[5%] lg:py-0" +
-          font.className
-        }
+          "flex flex-col items-center justify-center md:px-6 py-8 mx-auto mt-[5%] lg:py-0"        }
       >
         <h2
           className="flex items-center mb-6 text-base font-medium text-transform: uppercase;

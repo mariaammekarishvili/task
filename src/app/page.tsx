@@ -1,4 +1,6 @@
-import LogIn from './api/login'
+import Layout from '@/components/Layout'
+import LogIn from './login'
+import UserTable from '@/components/UserTable/UserTable'
 
 export default function Home() {
   return (
@@ -110,7 +112,9 @@ export default function Home() {
     //   </div>
     // </main>
     <>
-    <LogIn/>
+    <Layout>
+      <UserTable/>
+    </Layout>
     </>
   )
 }
