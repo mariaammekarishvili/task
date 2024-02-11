@@ -13,7 +13,6 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
 
   return (
     <>
-      <div className="relative rounded-lg overflow-x-auto shadow-md sm:rounded-lg">
         <div className="pt-2.5 px-5 flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
           <div>
             <Button onClick={() => setIsModalOpen(true)} type="light">
@@ -132,7 +131,6 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
             </tr>
           </tbody>
         </table>
-      </div>
 
       <Modal isOpen={isModalOpen} title={'მომხმარებლის დამატება'} onClose={() => setIsModalOpen(false)}>
         <UserRegistrationForm />
