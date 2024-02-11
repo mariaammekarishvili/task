@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface ButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
+  children: React.ReactNode | string;
+  onClick?: () => void;
   className?: string;
   type?: 'light' | 'primary'; // Define allowed types here
 }
@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, className, type = 'p
   const combinedClassName = `${baseStyle} ${typeStyles[type]} ${className || ''}`;
 
   return (
-    <button className={combinedClassName} onClick={onClick}>
+    <button type='submit' className={combinedClassName} onClick={onClick}>
       {children}
     </button>
   );

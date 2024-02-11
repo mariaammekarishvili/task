@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
+import UserRegistrationForm from "../UserRegistrationForm/UserRegistrationForm";
 
 interface UserTableProps {
   users?: [];
@@ -133,7 +134,9 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
         </table>
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}></Modal>
+      <Modal isOpen={isModalOpen} title={'მომხმარებლის დამატება'} onClose={() => setIsModalOpen(false)}>
+        <UserRegistrationForm />
+      </Modal>
     </>
   );
 };

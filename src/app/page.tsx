@@ -112,9 +112,9 @@ export default function Home() {
     //   </div>
     // </main>
     <>
-    <Layout>
-      <UserTable/>
-    </Layout>
+    <Layout> 
+       <UserTable/> 
+     </Layout>
     </>
   )
 }

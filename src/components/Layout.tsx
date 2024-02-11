@@ -14,7 +14,7 @@ const Layout: React.FC<WrapperProps> = ({
 }) => {
   return (
     <div className="p-2.5 bg-[#F4F5F9] h-[100vh] w-full">
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
       <nav className="top-2.5 left-[85px] z-50 w-full pl-[85px]">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">

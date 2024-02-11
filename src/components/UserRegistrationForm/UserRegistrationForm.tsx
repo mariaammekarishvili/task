@@ -1,66 +1,158 @@
 // components/UserRegistrationForm.tsx
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import validationSchema from '@/util/validationSchema';
-
-
-// Initial form values
-const initialValues = {
-    name: '', lastName: '', agency: '', position: '', email: '', phone: '', createdAt: '', updatedAt: ''
-};
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import validationSchema from "@/util/validationSchema";
+import Button from "../Button/Button";
 
 const UserRegistrationForm: React.FC = () => {
   return (
-    <Formik
-    initialValues={initialValues}
-    validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
-    >
-      {({ errors, touched }) => (
+    <div className="max-w-[751px] mx-auto">
+      <Formik
+        initialValues={{
+          name: "",
+          lastName: "",
+          agency: "",
+          position: "",
+          email: "",
+          phone: "",
+          createdAt: "",
+          updatedAt: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
         <Form className="space-y-6">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">Personal Details</h2>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                <Field name="name" type="text" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" />
-                {errors.name && touched.name ? <div className="text-sm text-red-600">{errors.name}</div> : null}
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                <Field name="email" type="email" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" />
-                {errors.email && touched.email ? <div className="text-sm text-red-600">{errors.email}</div> : null}
-              </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                სახელი
+              </label>
+              <Field
+                name="name"
+                type="text"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="name"
+                component="div"
+                className="text-sm text-red-600"
+              />
             </div>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">Security Details</h2>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                <Field name="password" type="password" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" />
-                {/* {errors.password && touched.password ? <div className="text-sm text-red-600">{errors.password}</div> : null} */}
-              </div>
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
-                <Field name="confirmPassword" type="password" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" />
-                {/* {errors.confirmPassword && touched.confirmPassword ? <div className="text-sm text-red-600">{errors.confirmPassword}</div> : null} */}
-              </div>
+            <div>
+              <label
+                htmlFor="lastName"
+                className="block text-sm font-medium text-gray-700"
+              >
+                გვარი
+              </label>
+              <Field
+                name="lastName"
+                type="text"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="lastName"
+                component="div"
+                className="text-sm text-red-600"
+              />
             </div>
+            <div>
+              <label
+                htmlFor="agency"
+                className="block text-sm font-medium text-gray-700"
+              >
+                დეპარტამენტი
+              </label>
+              <Field
+                name="agency"
+                type="text"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="agency"
+                component="div"
+                className="text-sm text-red-600"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="position"
+                className="block text-sm font-medium text-gray-700"
+              >
+                პოზიცია
+              </label>
+              <Field
+                name="position"
+                type="text"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="position"
+                component="div"
+                className="text-sm text-red-600"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                ელ. ფოსტა
+              </label>
+              <Field
+                name="email"
+                type="email"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="text-sm text-red-600"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray-700"
+              >
+                ტელეფონი
+              </label>
+              <Field
+                name="phone"
+                type="text"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="phone"
+                component="div"
+                className="text-sm text-red-600"
+              />
+            </div>
+            {/* <div>
+              <label htmlFor="createdAt" className="block text-sm font-medium text-gray-700">Created At</label>
+              <Field name="createdAt" type="text" className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3" />
+              <ErrorMessage name="createdAt" component="div" className="text-sm text-red-600" />
+            </div>
+            <div>
+              <label htmlFor="updatedAt" className="block text-sm font-medium text-gray-700">Updated At</label>
+              <Field name="updatedAt" type="text" className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3" />
+              <ErrorMessage name="updatedAt" component="div" className="text-sm text-red-600" />
+            </div> */}
           </div>
-
-          <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            Register
-          </button>
+          <div className="relative left-[-20px] mix-h-[80px] flex w-[calc(100%+42px)] justify-end p-4 md:p-5 rounded-b border-t border-[#C9D0E1]">
+            <Button type="primary">შენახვა</Button>
+          </div>
         </Form>
-      )}
-    </Formik>
+      </Formik>
+    </div>
   );
 };
 
