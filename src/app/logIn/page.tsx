@@ -1,14 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
 import { GoPerson } from "react-icons/go";
+
 import { API } from "../../../config/axios.config";
+import { useUser } from "@/contexts/UserContext";
 
 export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
+
+  const { setUser } = useUser();
 
   const formik = useFormik({
     initialValues: {
@@ -30,7 +36,14 @@ export default function LogIn() {
         { username: values.username, password: values.password }
       );
       const { token, user } = response.data;
-      localStorage.setItem("token", token);
+      const updatedUser = {
+        ...user,
+        token
+      };
+      setUser(updatedUser)
+      
+      router.push('/users');
+
     } catch (error: any) {
       console.log(error);
       setError(error.response.data.error);

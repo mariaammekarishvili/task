@@ -5,3 +5,6 @@ export const axiosInstance = axios.create({
   //   headers: { Authorization: "Bearer YOUR_TOKEN" },
   timeout: 1000,
 });
+
+
+export const API = 'http://localhost:3000/api/v1'
