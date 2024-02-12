@@ -4,6 +4,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { GoPerson } from "react-icons/go";
+import { API } from "../../../config/axios.config";
 
 export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,21 +12,27 @@ export default function LogIn() {
 
   const formik = useFormik({
     initialValues: {
-      user: "",
+      username: "",
       password: "",
     },
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      handleLogin(values)
+      handleLogin(values);
     },
   });
 
-  const handleLogin = async (values: { user: string; password: string }) => {
+  const handleLogin = async (values: {
+    username: string;
+    password: string;
+  }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/users/sign-in", { values });
+      const response = await axios.post(
+        `${API}/sign-in`,
+        { username: values.username, password: values.password }
+      );
       const { token, user } = response.data;
       localStorage.setItem("token", token);
     } catch (error: any) {
+      console.log(error);
       setError(error.response.data.error);
     }
   };
@@ -74,12 +81,12 @@ export default function LogIn() {
                 </label>
                 <input
                   type="text"
-                  name="user"
-                  id="user"
+                  name="username"
+                  id="username"
                   onChange={formik.handleChange}
-                  value={formik.values.user}
+                  value={formik.values.username}
                   className=" border border-[#C9D0E14D ] rounded-lg block w-full p-2.5 bg-white text-base	"
-                  placeholder="ელ.ფოსტა ან მობილური"
+                  placeholder="superadmin@gmail.com"
                 />
               </div>
               <div>

@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import UserRegistrationForm from "../UserRegistrationForm/UserRegistrationForm";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+
+import TableActions from "./TableActions/TableActions";
 
 interface UserTableProps {
   users?: [];
@@ -92,55 +93,11 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
             <td className="px-6 py-4">ariam@gmail</td>
             <td className="px-6 py-4">593 400</td>
 
-            <td className="px-6 py-4">
-              <button
-                data-tooltip-target="tooltip-click"
-                data-tooltip-trigger="click"
-                type="button"
-                className="ms-3 text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              >
-                <HiOutlineDotsVertical />
-              </button>
-
-              <div
-                id="tooltip-click"
-                role="tooltip"
-                className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-              >
-                Tooltip content
-                <div className="tooltip-arrow" data-popper-arrow></div>
-              </div>
+            <td className="px-6 py-4 relative">
+              <TableActions />
             </td>
           </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              <img
-                className="w-10 h-10 rounded-full"
-                src="/docs/images/people/profile-picture-1.jpg"
-                alt="Jese image"
-              />
-              <div className="ps-3">
-                <div className="text-base font-semibold">Neil</div>
-              </div>
-            </th>
-            <td className="px-6 py-4 text-[14px]">მეკა</td>
-            <td className="px-6 py-4 text-[14px]">სსიპ ციფრული...</td>
-            <td className="px-6 py-4 text-[14px]">დიზაინერი</td>
-            <td className="px-6 py-4 text-[14px]">ariam@gmail</td>
-            <td className="px-6 py-4 text-[14px]">593 400</td>
-
-            <td className="px-6 py-4">
-              <a
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Edit user
-              </a>
-            </td>
-          </tr>
+        
         </tbody>
       </table>
 
