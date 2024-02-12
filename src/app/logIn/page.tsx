@@ -1,21 +1,34 @@
 "use client";
 
-import { Noto_Sans_Georgian } from "@next/font/google";
+import axios from "axios";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { GoPerson } from "react-icons/go";
 
 export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
   const formik = useFormik({
     initialValues: {
       user: "",
       password: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      handleLogin(values)
     },
   });
+
+  const handleLogin = async (values: { user: string; password: string }) => {
+    try {
+      const response = await axios.post("http://localhost:3000/api/v1/users/sign-in", { values });
+      const { token, user } = response.data;
+      localStorage.setItem("token", token);
+    } catch (error: any) {
+      setError(error.response.data.error);
+    }
+  };
 
   return (
     <main className="md:px-0 px-2">
@@ -27,7 +40,8 @@ export default function LogIn() {
       </header>
       <div
         className={
-          "flex flex-col items-center justify-center md:px-6 py-8 mx-auto mt-[5%] lg:py-0"        }
+          "flex flex-col items-center justify-center md:px-6 py-8 mx-auto mt-[5%] lg:py-0"
+        }
       >
         <h2
           className="flex items-center mb-6 text-base font-medium text-transform: uppercase;

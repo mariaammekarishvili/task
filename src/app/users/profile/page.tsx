@@ -39,7 +39,7 @@ function UserProfile({
   return (
     <Layout title="პროფილი">
       <div className="w-full mx-auto">
-        <div className="bg-white scroll-none shadow rounded-lg p-3">
+        <div className="bg-white shadow rounded-lg p-3">
           <div className="pb-3 p-3 border-b mb-1 flex">
             <Image
               src="/profile.png"
