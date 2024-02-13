@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import { parseCookies } from "nookies"; // Import nookies library for handling cookies
 import axios from "axios";
@@ -18,7 +19,14 @@ interface UsersProps {
 }
 
 const Users: React.FC<UsersProps> = ({ users }) => {
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  
   return (
+   <>{ isClient &&
     <Layout title="მომხმარებლები">
       <>
         <TableFilters />
@@ -86,7 +94,7 @@ const Users: React.FC<UsersProps> = ({ users }) => {
           </tbody>
         </table>
       </>
-    </Layout>
+    </Layout>}</>
   );
 };
 export const getServerSideProps: GetServerSideProps = async (context) => {
