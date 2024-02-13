@@ -13,7 +13,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, title, onClose, children }) => {
   return (
     <div
       id="default-modal"
-      className=" flex bg-[#00000038] h-screen overflow-y-auto overflow-x-hidden absolute top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full"
+      className="fixed flex bg-[#00000038] h-screen overflow-y-auto overflow-x-hidden z-100 top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full"
     >
       <div className="relative p-6 pb-0 w-full max-w-2xl max-h-full">
         {/* content */}

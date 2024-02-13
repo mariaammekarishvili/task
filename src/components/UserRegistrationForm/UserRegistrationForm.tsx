@@ -11,12 +11,10 @@ const UserRegistrationForm: React.FC = () => {
         initialValues={{
           name: "",
           lastName: "",
-          agency: "",
+          role: "",
           position: "",
           email: "",
           phone: "",
-          createdAt: "",
-          updatedAt: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -69,15 +67,15 @@ const UserRegistrationForm: React.FC = () => {
                 htmlFor="agency"
                 className="block text-sm font-medium text-gray-700"
               >
-                დეპარტამენტი
+                როლი
               </label>
               <Field
-                name="agency"
+                name="role"
                 type="text"
                 className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
               />
               <ErrorMessage
-                name="agency"
+                name="role"
                 component="div"
                 className="text-sm text-red-600"
               />
@@ -136,16 +134,7 @@ const UserRegistrationForm: React.FC = () => {
                 className="text-sm text-red-600"
               />
             </div>
-            {/* <div>
-              <label htmlFor="createdAt" className="block text-sm font-medium text-gray-700">Created At</label>
-              <Field name="createdAt" type="text" className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3" />
-              <ErrorMessage name="createdAt" component="div" className="text-sm text-red-600" />
-            </div>
-            <div>
-              <label htmlFor="updatedAt" className="block text-sm font-medium text-gray-700">Updated At</label>
-              <Field name="updatedAt" type="text" className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3" />
-              <ErrorMessage name="updatedAt" component="div" className="text-sm text-red-600" />
-            </div> */}
+          
           </div>
           <div className="relative left-[-20px] mix-h-[80px] flex w-[calc(100%+42px)] justify-end p-4 md:p-5 rounded-b border-t border-[#C9D0E1]">
             <Button type="primary">შენახვა</Button>
