@@ -42,6 +42,7 @@ export default function LogIn() {
       };
       setUser(updatedUser)
       
+      localStorage.setItem("token", token);
       router.push('/users');
 
     } catch (error: any) {

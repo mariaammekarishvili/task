@@ -1,17 +1,31 @@
-type User = {
+export type Permission = {
+  id: number;
+  key: string;
+  name: string;
+};
+
+export type Role = {
+  id: number;
+  name: string;
+  description: string;
+  permissions: {
+    users: Permission[];
+    tabs: Permission[];
+    roles: Permission[];
+  };
+};
+
+export type User = {
+  id: number;
   name: string;
   lastName: string;
   agency: string;
   position: string;
   email: string;
   phone: string;
-  createdAt: string;
-  updatedAt: string;
-  role: string;
-  file: string;
   password: string;
-  id: number;
-  token: string;
+  role: Role;
+  token?: string
 };
 
-export default User;
+export type UsersArray = User[];
