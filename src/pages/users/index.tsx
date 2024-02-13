@@ -65,7 +65,7 @@ const Users: React.FC<UsersProps> = ({ users }) => {
                       alt={user.name + " image"}
                     />
                     <div className="ps-3">
-                      <Link href={"/profile/"}>
+                      <Link href={`users/profile?id=${user.id}`}>
                         <div className="font-normal">{user.name}</div>
                       </Link>
                     </div>
@@ -79,7 +79,7 @@ const Users: React.FC<UsersProps> = ({ users }) => {
                   <td className="px-6 py-4">{user.phone}</td>
 
                   <td className="px-6 py-4 relative">
-                    <TableActions />
+                    <TableActions userId={user.id}/>
                   </td>
                 </tr>
               ))}
