@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import 'tailwindcss/tailwind.css';
 import { Noto_Sans_Georgian } from "@next/font/google";
 import './globals.css'
 import Providers from './providers';

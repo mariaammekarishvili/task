@@ -1,18 +1,23 @@
 "use client";
 
-import Layout from "@/components/Layout";
-import TableActions from "@/components/UserTable/TableActions/TableActions";
-import TableFilters from "@/components/UserTable/TableFilters/TableFilters";
-import { UsersArray } from "@/types/types";
+import "tailwindcss/tailwind.css";
+import { parseCookies } from "nookies"; // Import nookies library for handling cookies
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 
+import TableActions from "@/components/UserTable/TableActions/TableActions";
+import TableFilters from "@/components/UserTable/TableFilters/TableFilters";
+import Layout from "@/components/Layout";
+import { UsersArray } from "@/types/types";
+import profilePic from "../../../public/uploads/user-img.jpg";
+import Link from "next/link";
+
 interface UsersProps {
-  users?: UsersArray
+  users?: UsersArray;
 }
 
-const Users: React.FC<UsersProps> = ({users}) => {
+const Users: React.FC<UsersProps> = ({ users }) => {
   return (
     <Layout title="მომხმარებლები">
       <>
@@ -42,50 +47,67 @@ const Users: React.FC<UsersProps> = ({users}) => {
             </tr>
           </thead>
           <tbody className="text-black">
-            {users?.map((user, index) => (
-              <tr
-                key={index}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-              >
-                <th
-                  scope="row"
-                  className="flex items-center px-6 py-4 whitespace-nowrap dark:text-white"
+            {users?.length &&
+              users?.map((user, index) => (
+                <tr
+                  key={index}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
-                  <Image src={""} alt={user.name + " image"}/>
-                  <div className="ps-3">
-                    <div className="font-normal">{user.name}</div>
-                  </div>
-                </th>
-                <td className="px-6 py-4">{user.lastName}</td>
-                <td className="px-6 py-4">{user.agency + ' ' + user.position}</td>
-                <td className="px-6 py-4">{user.role.name}</td>
-                <td className="px-6 py-4">{user.email}</td>
-                <td className="px-6 py-4">{user.phone}</td>
+                  <th
+                    scope="row"
+                    className="flex items-center px-6 py-4 whitespace-nowrap dark:text-white"
+                  >
+                    <Image
+                      src={profilePic}
+                      className="rounded-50 border-gray-400 border-px"
+                      width={24}
+                      height={24}
+                      alt={user.name + " image"}
+                    />
+                    <div className="ps-3">
+                      <Link href={"/profile/"}>
+                        <div className="font-normal">{user.name}</div>
+                      </Link>
+                    </div>
+                  </th>
+                  <td className="px-6 py-4">{user.lastName}</td>
+                  <td className="px-6 py-4">
+                    {user.agency + " " + user.position}
+                  </td>
+                  <td className="px-6 py-4">{user.role.name}</td>
+                  <td className="px-6 py-4">{user.email}</td>
+                  <td className="px-6 py-4">{user.phone}</td>
 
-                <td className="px-6 py-4 relative">
-                  <TableActions />
-                </td>
-              </tr>
-            ))}
+                  <td className="px-6 py-4 relative">
+                    <TableActions />
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </>
     </Layout>
   );
 };
-export const getServerSideProps:GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   // Extract query parameters from context.params or context.query
-   
+
   const { query } = context;
   const { name, lastName, agency, role } = query;
 
   try {
+    const cookies = parseCookies(context);
+    const token = cookies.token;
+
     const response = await axios.get("http://localhost:3000/api/v1/users", {
       params: { name, lastName, agency, role },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     return {
       props: {
-        users: response.data,
+        users: response.data.data,
       },
     };
   } catch (error) {

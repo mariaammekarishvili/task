@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import axios from "axios";
+import "tailwindcss/tailwind.css";
 import { useFormik } from "formik";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { GoPerson } from "react-icons/go";
+import { setCookie } from "nookies";
 
 import { API } from "../../../config/axios.config";
 import { useUser } from "@/contexts/UserContext";
@@ -26,28 +28,39 @@ export default function LogIn() {
     },
   });
 
+  // Function to set token in cookie
+  function setTokenInCookie(token: string) {
+    // Set the token in a cookie named 'token'
+    setCookie(null, "token", token, {
+      maxAge: 30 * 24 * 60 * 60, // Expiry time in seconds (30 days in this example)
+      path: "/", // Cookie path
+      secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production
+      sameSite: "strict", // SameSite policy for security
+    });
+  }
+
   const handleLogin = async (values: {
     username: string;
     password: string;
   }) => {
     try {
-      const response = await axios.post(
-        `${API}/sign-in`,
-        { username: values.username, password: values.password }
-      );
-      const { token, user } = response.data;
+      const response = await axios.post(`${API}/sign-in`, {
+        username: values.username,
+        password: values.password,
+      });
+      const token = response.data.data.token;
+      const user = response.data.data.user;
       const updatedUser = {
         ...user,
-        token
+        token,
       };
-      setUser(updatedUser)
+      setUser(updatedUser);
+      setTokenInCookie(token);
       
-      localStorage.setItem("token", token);
       router.push('/users');
-
     } catch (error: any) {
       console.log(error);
-      setError(error.response.data.error);
+      setError(error?.response?.data?.error);
     }
   };
 
