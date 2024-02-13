@@ -12,12 +12,12 @@
       "role": 1
     },
     {
-      "name": "dlskdls",
-      "lastName": "dlskldksdks",
-      "agency": "dlskldksds",
-      "position": "dfdlkfldkflk",
-      "email": "dsdlsdsklds",
-      "phone": "dlskdlsklds",
+      "name": "John",
+      "lastName": "Doe",
+      "agency": "ABC Agency",
+      "position": "Manager",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
       "createdAt": "2024-01-08T17:23:37.895Z",
       "updatedAt": "2024-01-08T17:23:37.895Z",
       "role": "1",

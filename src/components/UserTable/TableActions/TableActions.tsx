@@ -26,14 +26,16 @@ const TableActions: React.FC<ActionProps> = ({ userId }) => {
         opacity={1}
         openOnClick={true}
         offset={-5}
+        clickable={true}
+
       >
         <div className="w-62  h-22 rounded-lg p-1 absolute bg-white left-[-200px] shadow-lg">
           <Link href={`users/profile?id=${userId}`}>
-            <div className="w-60 h-[39px] text-[#474747] cursor-pointer hover:bg-slate-400 text-sm px-4 py-2.5 rounded-lg flex items-center">
+            <div className="w-60 h-[39px] text-[#474747] cursor-pointer hover:bg-blue-100 text-sm px-4 py-2.5 rounded-lg flex items-center">
               <FaRegUser className="mr-2" /> პროფილის ნახვა
             </div>
           </Link>
-          <div className="w-60 cursor-pointer h-[39px] text-[#7A0000] text-sm px-4 py-2.5 rounded-lg flex items-center">
+          <div className="w-60 cursor-pointer h-[39px] text-[#7A0000] hover:bg-red-100 text-sm px-4 py-2.5 rounded-lg flex items-center">
             <RiDeleteBin7Line color="#7A0000" className="mr-2" /> მომხმარებლის
             გაუქმება
           </div>

@@ -25,7 +25,10 @@ export type User = {
   phone: string;
   password: string;
   role: Role;
+  file?: string;
   token?: string
+  updatedAt?: string;
+  createdAt?: string;
 };
 
 export type UsersArray = User[];

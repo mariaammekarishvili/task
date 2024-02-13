@@ -5,13 +5,13 @@ import { parseCookies } from "nookies"; // Import nookies library for handling c
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import TableActions from "@/components/UserTable/TableActions/TableActions";
 import TableFilters from "@/components/UserTable/TableFilters/TableFilters";
 import Layout from "@/components/Layout";
 import { UsersArray } from "@/types/types";
 import profilePic from "../../../public/uploads/user-img.jpg";
-import Link from "next/link";
 
 interface UsersProps {
   users?: UsersArray;
