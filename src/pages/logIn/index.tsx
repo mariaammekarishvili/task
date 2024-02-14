@@ -16,7 +16,7 @@ export default function LogIn() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const { setUser } = useUser();
+  const { setUser, user } = useUser();
 
   const formik = useFormik({
     initialValues: {
@@ -28,14 +28,11 @@ export default function LogIn() {
     },
   });
 
-  // Function to set token in cookie
   function setTokenInCookie(token: string) {
-    // Set the token in a cookie named 'token'
     setCookie(null, "token", token, {
-      maxAge: 30 * 24 * 60 * 60, // Expiry time in seconds (30 days in this example)
-      path: "/", // Cookie path
-      secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production
-      sameSite: "strict", // SameSite policy for security
+      maxAge: 30 * 24 * 60 * 60, //  time in seconds -30days
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict", //policy for security
     });
   }
 
@@ -50,19 +47,22 @@ export default function LogIn() {
       });
       const token = response.data.data.token;
       const user = response.data.data.user;
+      console.log
       const updatedUser = {
         ...user,
         token,
       };
-      setUser(updatedUser);
+      setUser((user: any) => ({ ...user, ...updatedUser }));
+
       setTokenInCookie(token);
-      
-      router.push('/users');
+      console.log('user', updatedUser)
+      // router.push('/users');
     } catch (error: any) {
       console.log(error);
       setError(error?.response?.data?.error);
     }
   };
+  console.log('user2', user)
 
   return (
     <main className="md:px-0 px-2">

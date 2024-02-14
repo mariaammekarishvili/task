@@ -3,8 +3,9 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validationSchema from "@/util/validationSchema";
 import Button from "../Button/Button";
+import { addUser } from "@/app/api/v1/apiClient";
 
-const UserRegistrationForm: React.FC = () => {
+const UserRegistrationForm: React.FC = () => {  
   return (
     <div className="max-w-[751px] mx-auto">
       <Formik
@@ -15,9 +16,11 @@ const UserRegistrationForm: React.FC = () => {
           position: "",
           email: "",
           phone: "",
+          agency:'',
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
+          addUser(values);
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -64,7 +67,7 @@ const UserRegistrationForm: React.FC = () => {
             </div>
             <div>
               <label
-                htmlFor="agency"
+                htmlFor="role"
                 className="block text-sm font-medium text-gray-700"
               >
                 როლი
@@ -76,6 +79,24 @@ const UserRegistrationForm: React.FC = () => {
               />
               <ErrorMessage
                 name="role"
+                component="div"
+                className="text-sm text-red-600"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="agency"
+                className="block text-sm font-medium text-gray-700"
+              >
+                დეპარტამენტი
+              </label>
+              <Field
+                name="agency"
+                type="text"
+                className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3"
+              />
+              <ErrorMessage
+                name="agency"
                 component="div"
                 className="text-sm text-red-600"
               />
@@ -134,7 +155,6 @@ const UserRegistrationForm: React.FC = () => {
                 className="text-sm text-red-600"
               />
             </div>
-          
           </div>
           <div className="relative left-[-20px] mix-h-[80px] flex w-[calc(100%+42px)] justify-end p-4 md:p-5 rounded-b border-t border-[#C9D0E1]">
             <Button type="primary">შენახვა</Button>

@@ -4,11 +4,9 @@ import { FaRegUser } from "react-icons/fa";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import Link from "next/link";
-import axios from "axios";
-import { parseCookies } from "nookies";
 
-import { API } from "../../../../config/axios.config";
 import SubmitionModal from "@/components/SubmitionModal/SubmitionModal";
+import { deleteUser } from "@/app/api/v1/apiClient";
 
 interface ActionProps {
   userId: number;
@@ -16,28 +14,9 @@ interface ActionProps {
 
 const TableActions: React.FC<ActionProps> = ({ userId }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [responsType, setResponsType] = useState<'success' | 'error' | null>(null);
-  const cookies = parseCookies();
-  const token = cookies.token;
-  async function deleteUser() {
-    try {
-      const response = await axios.delete(`${API}/users/delete/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setOpenModal(false);
-      setResponsType('success')
-      console.log("User deleted successfully:", response.data);
-    } catch (error) {
-      console.error("Error deleting user:", error);
-      setResponsType('error')
-    }
-
-    setTimeout(()=>{
-      setResponsType(null)
-    },2000)
-  }
+  const [responsType, setResponsType] = useState<"success" | "error" | null>(
+    null
+  );
 
   return (
     <>
@@ -92,7 +71,7 @@ const TableActions: React.FC<ActionProps> = ({ userId }) => {
       <SubmitionModal
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
-        onSubmit={() => deleteUser()}
+        onSubmit={() => deleteUser(userId, setOpenModal, setResponsType)}
       />
     </>
   );

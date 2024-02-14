@@ -1,8 +1,9 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
-import Head from "next/head";
-import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
+import Image from "next/image";
 
+import { useUser } from "@/contexts/UserContext";
+import profilePic from "../../public/uploads/user-img.jpg";
 interface WrapperProps {
   children?: ReactNode;
   title?: string;
@@ -12,9 +13,10 @@ const Layout: React.FC<WrapperProps> = ({
   children,
   title = "მომხმარებლები",
 }) => {
+  const { user } = useUser();
+  console.log('user', user)
   return (
     <div className="p-2.5 bg-[#F4F5F9] h-[100vh] w-full">
-      {/* <ThemeSwitcher /> */}
       <nav className="top-2.5 left-[85px] z-50 w-full pl-[85px]">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
@@ -28,6 +30,7 @@ const Layout: React.FC<WrapperProps> = ({
             <div className="flex items-center">
               <div className="flex items-center ms-3">
                 <div>
+                  <Link href={`/users/profile?id=${user?.id}`}>
                   <button
                     type="button"
                     className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -35,12 +38,14 @@ const Layout: React.FC<WrapperProps> = ({
                     data-dropdown-toggle="dropdown-user"
                   >
                     <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-6 h-6 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                      alt="user photo"
+                    <Image
+                      src={profilePic}
+                      className="rounded-[50%] border-gray-400 border-px"
+                      width={32}
+                      height={32}
+                      alt={"profile"}
                     />
-                  </button>
+                  </button></Link>
                 </div>
                 <div
                   className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -112,14 +117,7 @@ const Layout: React.FC<WrapperProps> = ({
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-            <li className="mb-16">
-              <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                className="h-8 me-3"
-                alt="FlowBite Logo"
-              />
-            </li>
-
+            <li className="mb-16"></li>
             <li>
               <Link
                 href="#"
@@ -173,10 +171,9 @@ const Layout: React.FC<WrapperProps> = ({
         </div>
       </aside>
       <div className="left-[85px] z-50 w-full pl-[75px] pt-1.5">
-      <div className="relative rounded-lg overflow-x-auto shadow-md sm:rounded-lg">
-
-      {children}
-      </div>
+        <div className="relative rounded-lg overflow-x-auto shadow-md sm:rounded-lg">
+          {children}
+        </div>
       </div>
     </div>
   );
