@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { parseCookies } from "nookies";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 import Users from "@/pages/users";
 
@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!cookies.token) {
-      router.push("/login");
+      router.push("/logIn");
     } else {
       router.push("/users");
     }
