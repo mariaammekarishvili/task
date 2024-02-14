@@ -20,7 +20,7 @@
       "phone": "123-456-7890",
       "createdAt": "2024-01-08T17:23:37.895Z",
       "updatedAt": "2024-01-08T17:23:37.895Z",
-      "role": "1",
+      "role": 1,
       "file": "/mnt/D/projects/senior_example/example/public/uploads/download.jpeg",
       "password": "$2b$10$Fx4LZNirObHYSZQzJ6EH/uXogaCgLT32Eo78xlW4yH8fwrmVoXg2O",
       "id": 2

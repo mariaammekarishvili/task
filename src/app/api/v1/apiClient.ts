@@ -1,11 +1,47 @@
 import { User } from "@/types/types";
 import axios from "axios";
-import { parseCookies } from "nookies";
+import router from "next/navigation";
+import { parseCookies, setCookie } from "nookies";
+import { SetStateAction } from "react";
 
 export const API = "http://localhost:3000/api/v1";
 const cookies = parseCookies();
 const token = cookies.token;
 
+function setTokenInCookie(token: string) {
+  setCookie(null, "token", token, {
+    maxAge: 30 * 24 * 60 * 60, //  time in seconds -30days
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict", //policy for security
+  });
+}
+
+export const logIn = async (
+  values: { username: string; password: string },
+  setUser: (
+    value: User | null | ((prevState: User | null) => User | null)
+  ) => void
+) => {
+  try {
+    const response = await axios.post(`${API}/sign-in`, {
+      username: values.username,
+      password: values.password,
+    });
+    if (response?.status === 200) {
+      const token = response.data.data.token;
+      const user = response.data.data.user;
+
+      const updatedUser = {
+        ...user,
+        token,
+      };
+      setUser(updatedUser);
+      setTokenInCookie(token);
+    }
+  } catch (error: any) {
+    console.error(error);
+  }
+};
 export async function addUser(userData: any) {
   try {
     const response = await axios.post(`${API}/users/add`, {
@@ -44,27 +80,26 @@ export async function deleteUser(
 }
 
 export async function deleteRole(
-    roleId: number,
-    setOpenModal: (arg0: boolean) => void,
-    setResponsType: (arg0: "error" | "success" | null) => void
-  ) {
-    try {
-      const response = await axios.delete(`${API}/role/delete/${roleId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setOpenModal(false);
-      setResponsType("success");
-      console.log("User deleted successfully:", response.data);
-    } catch (error) {
-      console.error("Error deleting user:", error);
-      setOpenModal(false);
-      setResponsType("error");
-    }
-  
-    setTimeout(() => {
-      setResponsType(null);
-    }, 2000);
+  roleId: number,
+  setOpenModal: (arg0: boolean) => void,
+  setResponsType: (arg0: "error" | "success" | null) => void
+) {
+  try {
+    const response = await axios.delete(`${API}/role/delete/${roleId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setOpenModal(false);
+    setResponsType("success");
+    console.log("User deleted successfully:", response.data);
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    setOpenModal(false);
+    setResponsType("error");
   }
-  
+
+  setTimeout(() => {
+    setResponsType(null);
+  }, 2000);
+}

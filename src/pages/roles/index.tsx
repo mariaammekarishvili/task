@@ -11,6 +11,7 @@ import Layout from "@/components/Layout";
 import { GetServerSideProps } from "next";
 import TableActions from "@/components/UserTable/TableActions/TableActions";
 import { BsPersonDash } from "react-icons/bs";
+import { useUser } from "@/contexts/UserContext";
 
 interface RolesProps {
   roles?: Roles[];
@@ -18,6 +19,9 @@ interface RolesProps {
 const Roles: React.FC<RolesProps> = ({ roles }) => {
   const [modalOpen, setIsModalOpen] = useState(false);
   const [client, setClient] = useState(false);
+
+  const { userRef } = useUser();
+  const userRole = userRef.current?.role.name;
 
   useEffect(() => {
     setClient(true);
@@ -65,7 +69,7 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
                   {role.permissions.users.length}
                 </td>
                 <td className="px-6 py-4 relative">
-                    <TableActions id={role.id} isRole />
+                  {userRole !== "user" && <TableActions id={role.id} isRole />}
                 </td>
               </tr>
             ))}
@@ -75,8 +79,8 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
   );
 };
 
-export const getServerSideProps:GetServerSideProps = async (context) => {
-    const { query } = context;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { query } = context;
 
   try {
     const cookies = parseCookies(context);

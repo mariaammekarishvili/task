@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { parseCookies } from "nookies";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +10,7 @@ export default function Home() {
   const cookies = parseCookies();
   const router = useRouter();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!cookies.token) {
       router.push("/logIn");
     } else {

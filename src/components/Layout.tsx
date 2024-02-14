@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,8 +13,9 @@ const Layout: React.FC<WrapperProps> = ({
   children,
   title = "მომხმარებლები",
 }) => {
-  const { user } = useUser();
-  console.log('user', user)
+  const { userRef } = useUser();
+  const user = userRef.current
+console.log(user)
   return (
     <div className="p-2.5 bg-[#F4F5F9] h-[100vh] w-full">
       <nav className="top-2.5 left-[85px] z-50 w-full pl-[85px]">

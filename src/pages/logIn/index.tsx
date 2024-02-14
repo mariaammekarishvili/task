@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "tailwindcss/tailwind.css";
 import { useFormik } from "formik";
@@ -10,13 +10,23 @@ import { setCookie } from "nookies";
 
 import { API } from "../../../config/axios.config";
 import { useUser } from "@/contexts/UserContext";
+import { User } from "@/types/types";
+import { logIn } from "@/app/api/v1/apiClient";
 
 export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
-  const { setUser, user } = useUser();
+  const { userRef } = useUser();
+
+  useEffect(() => {
+    if (user) {
+      userRef.current = { ...user };
+      router.push("/users");
+    }
+  }, [user]);
 
   const formik = useFormik({
     initialValues: {
@@ -24,45 +34,9 @@ export default function LogIn() {
       password: "",
     },
     onSubmit: (values) => {
-      handleLogin(values);
+      logIn(values, setUser);
     },
   });
-
-  function setTokenInCookie(token: string) {
-    setCookie(null, "token", token, {
-      maxAge: 30 * 24 * 60 * 60, //  time in seconds -30days
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict", //policy for security
-    });
-  }
-
-  const handleLogin = async (values: {
-    username: string;
-    password: string;
-  }) => {
-    try {
-      const response = await axios.post(`${API}/sign-in`, {
-        username: values.username,
-        password: values.password,
-      });
-      const token = response.data.data.token;
-      const user = response.data.data.user;
-      console.log
-      const updatedUser = {
-        ...user,
-        token,
-      };
-      setUser((user: any) => ({ ...user, ...updatedUser }));
-
-      setTokenInCookie(token);
-      console.log('user', updatedUser)
-      router.push('/users');
-    } catch (error: any) {
-      console.log(error);
-      setError(error?.response?.data?.error);
-    }
-  };
-  console.log('user2', user)
 
   return (
     <main className="md:px-0 px-2">
