@@ -12,6 +12,8 @@ import { GetServerSideProps } from "next";
 import TableActions from "@/components/UserTable/TableActions/TableActions";
 import { BsPersonDash } from "react-icons/bs";
 import { useUser } from "@/contexts/UserContext";
+import Modal from "@/components/Modal/Modal";
+import RoleRegistrationForm from "@/components/RoleRegistration/RoleRegistration";
 
 interface RolesProps {
   roles?: Roles[];
@@ -35,6 +37,13 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
           დამატება
         </Button>
       </div>
+      <Modal
+        isOpen={modalOpen}
+        title={"მომხმარებლის დამატება"}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <RoleRegistrationForm />
+      </Modal>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className=" text-[14px] bg-white font-normal text-[#636971] dark:bg-gray-700 dark:text-gray-400">
           <tr>

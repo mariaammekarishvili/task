@@ -23,3 +23,16 @@ const validationSchema = Yup.object({
 });
 
 export default validationSchema;
+
+
+export const roleValidationSchema = Yup.object({
+  name: Yup.string().required('Name is required')  ,
+  description: Yup.string(),
+  permissions: Yup.object({
+    users: Yup.object().shape({
+      add: Yup.boolean(),
+      delete: Yup.boolean(),
+      update: Yup.boolean(),
+      readOnly: Yup.boolean(),
+    }),})
+});

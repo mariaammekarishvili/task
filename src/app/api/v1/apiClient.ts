@@ -1,4 +1,4 @@
-import { User } from "@/types/types";
+import { Role, User } from "@/types/types";
 import axios from "axios";
 import router from "next/navigation";
 import { parseCookies, setCookie } from "nookies";
@@ -6,7 +6,8 @@ import { SetStateAction } from "react";
 
 export const API = "http://localhost:3000/api/v1";
 const cookies = parseCookies();
-const token = cookies.token;
+const authToken = cookies.token;
+const token = authToken.replace('token=', '');
 
 function setTokenInCookie(token: string) {
   setCookie(null, "token", token, {
@@ -46,7 +47,7 @@ export async function addUser(userData: any) {
   try {
     const response = await axios.post(`${API}/users/add`, {
       body: userData,
-      headers: `Bearer ${token}`,
+      headers: { Authorization: `Bearer ${token}` },
     });
     console.log("User added successfully:", response.data);
   } catch (error) {
@@ -54,6 +55,18 @@ export async function addUser(userData: any) {
   }
 }
 
+export async function addRole(data: any) {
+    try {
+      const response = await axios.post(`${API}/role/add`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Role added successfully:", response.data);
+    } catch (error) {
+      console.error("Error adding role:", error);
+    }
+  }
 export async function deleteUser(
   userId: number,
   setOpenModal: (arg0: boolean) => void,

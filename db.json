@@ -24,6 +24,56 @@
       "file": "/mnt/D/projects/senior_example/example/public/uploads/download.jpeg",
       "password": "$2b$10$Fx4LZNirObHYSZQzJ6EH/uXogaCgLT32Eo78xlW4yH8fwrmVoXg2O",
       "id": 2
+    },
+    {
+      "name": "John",
+      "lastName": "Doe",
+      "agency": "ABC Agency",
+      "position": "Manager",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "createdAt": "2024-01-08T17:23:37.895Z",
+      "updatedAt": "2024-01-08T17:23:37.895Z",
+      "role": 1,
+      "file": "/mnt/D/projects/senior_example/example/public/uploads/download.jpeg",
+      "password": "$2b$10$Fx4LZNirObHYSZQzJ6EH/uXogaCgLT32Eo78xlW4yH8fwrmVoXg2O",
+      "id": 3
+    },
+    {
+      "name": "John",
+      "lastName": "Doe",
+      "agency": "ABC Agency",
+      "position": "Manager",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "createdAt": "2024-01-08T17:23:37.895Z",
+      "updatedAt": "2024-01-08T17:23:37.895Z",
+      "role": 1,
+      "file": "/mnt/D/projects/senior_example/example/public/uploads/download.jpeg",
+      "password": "$2b$10$Fx4LZNirObHYSZQzJ6EH/uXogaCgLT32Eo78xlW4yH8fwrmVoXg2O",
+      "id": 4
+    },
+    {
+      "name": "John",
+      "lastName": "Doe",
+      "agency": "ABC Agency",
+      "position": "Manager",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "createdAt": "2024-01-08T17:23:37.895Z",
+      "updatedAt": "2024-01-08T17:23:37.895Z",
+      "role": 1,
+      "file": "/mnt/D/projects/senior_example/example/public/uploads/download.jpeg",
+      "password": "$2b$10$Fx4LZNirObHYSZQzJ6EH/uXogaCgLT32Eo78xlW4yH8fwrmVoXg2O",
+      "id": 5
+    },
+    {
+      "name": "mari",
+      "email": "mari@gmail.com",
+      "password": "$2b$10$t/soIM//jlTXSSinFQHt7.roOo66dwqODh29uQtS7dbINOTDGXuSS",
+      "createdAt": "2024-02-14T20:07:22.915Z",
+      "updatedAt": "2024-02-14T20:07:22.915Z",
+      "id": 6
     }
   ],
   "roles": [
@@ -78,6 +128,36 @@
         ],
         "roles": []
       }
+    },
+    {
+      "name": "some role",
+      "description": "test",
+      "permissions": {
+        "users": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "createdAt": "2024-02-14T19:54:46.625Z",
+      "updatedAt": "2024-02-14T19:54:46.625Z",
+      "id": 4
+    },
+    {
+      "name": "m",
+      "description": "m",
+      "permissions": {
+        "users": {
+          "add": true,
+          "delete": false,
+          "update": true,
+          "readOnly": false
+        }
+      },
+      "createdAt": "2024-02-14T20:42:10.848Z",
+      "updatedAt": "2024-02-14T20:42:10.848Z",
+      "id": 5
     }
   ],
   "permissions": {
