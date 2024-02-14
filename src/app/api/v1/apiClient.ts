@@ -34,6 +34,7 @@ export async function deleteUser(
     console.log("User deleted successfully:", response.data);
   } catch (error) {
     console.error("Error deleting user:", error);
+    setOpenModal(false);
     setResponsType("error");
   }
 
@@ -42,3 +43,28 @@ export async function deleteUser(
   }, 2000);
 }
 
+export async function deleteRole(
+    roleId: number,
+    setOpenModal: (arg0: boolean) => void,
+    setResponsType: (arg0: "error" | "success" | null) => void
+  ) {
+    try {
+      const response = await axios.delete(`${API}/role/delete/${roleId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setOpenModal(false);
+      setResponsType("success");
+      console.log("User deleted successfully:", response.data);
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      setOpenModal(false);
+      setResponsType("error");
+    }
+  
+    setTimeout(() => {
+      setResponsType(null);
+    }, 2000);
+  }
+  

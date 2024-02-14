@@ -60,7 +60,7 @@ const SubmitionModal: React.FC<SubmissionModalProps> = ({
               />
             </svg>
             <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-              ნამდვილად გსურთ მომხმარების წაშლა?
+              ნამდვილად გსურთ წაშლა?
             </h3>
             <Button type="base" onClick={onSubmit}>
               დიახ

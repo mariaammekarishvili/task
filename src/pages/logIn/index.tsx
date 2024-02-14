@@ -56,7 +56,7 @@ export default function LogIn() {
 
       setTokenInCookie(token);
       console.log('user', updatedUser)
-      // router.push('/users');
+      router.push('/users');
     } catch (error: any) {
       console.log(error);
       setError(error?.response?.data?.error);

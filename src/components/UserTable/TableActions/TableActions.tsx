@@ -6,13 +6,14 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import Link from "next/link";
 
 import SubmitionModal from "@/components/SubmitionModal/SubmitionModal";
-import { deleteUser } from "@/app/api/v1/apiClient";
+import { deleteRole, deleteUser } from "@/app/api/v1/apiClient";
 
 interface ActionProps {
-  userId: number;
+  id: number;
+  isRole?: boolean;
 }
 
-const TableActions: React.FC<ActionProps> = ({ userId }) => {
+const TableActions: React.FC<ActionProps> = ({ id, isRole }) => {
   const [openModal, setOpenModal] = useState(false);
   const [responsType, setResponsType] = useState<"success" | "error" | null>(
     null
@@ -25,7 +26,7 @@ const TableActions: React.FC<ActionProps> = ({ userId }) => {
           className="fixed p-4 mb-10 right-4 top-8 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
           role="alert"
         >
-          <span className="font-medium">იუზერი წარმატებით წაიშალა</span>
+          <span className="font-medium">{isRole? 'როლი':'იუზერი'} წარმატებით წაიშალა</span>
         </div>
       ) : responsType === "error" ? (
         <div
@@ -54,24 +55,26 @@ const TableActions: React.FC<ActionProps> = ({ userId }) => {
         clickable={true}
       >
         <div className="w-62  h-22 rounded-lg p-1 absolute bg-white left-[-200px] shadow-lg">
-          <Link href={`users/profile?id=${userId}`}>
+         {!isRole &&
+          <Link href={`users/profile?id=${id}`}>
             <div className="w-60 h-[39px] text-[#474747] cursor-pointer hover:bg-blue-100 text-sm px-4 py-2.5 rounded-lg flex items-center">
               <FaRegUser className="mr-2" /> პროფილის ნახვა
             </div>
           </Link>
+}
           <div
             onClick={() => setOpenModal(true)}
             className="w-60 cursor-pointer h-[39px] text-[#7A0000] hover:bg-red-100 text-sm px-4 py-2.5 rounded-lg flex items-center"
           >
-            <RiDeleteBin7Line color="#7A0000" className="mr-2" /> მომხმარებლის
-            გაუქმება
+            <RiDeleteBin7Line color="#7A0000" className="mr-2" /> {isRole ?'როლის':'მომხმარებლის'}
+            წაშლა
           </div>
         </div>
       </ReactTooltip>
       <SubmitionModal
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
-        onSubmit={() => deleteUser(userId, setOpenModal, setResponsType)}
+        onSubmit={() => {isRole ? deleteRole(id, setOpenModal, setResponsType):deleteUser(id, setOpenModal, setResponsType)}}
       />
     </>
   );
