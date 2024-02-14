@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import "tailwindcss/tailwind.css";
 import { parseCookies } from "nookies";
 import axios from "axios";
@@ -22,8 +22,9 @@ interface UsersProps {
 const Users: React.FC<UsersProps> = ({ users }) => {
   const cookies = parseCookies();
   const router = useRouter();
+  const userId = cookies.userId;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!cookies.token) {
       router.push("/logIn");
     } else {
@@ -78,7 +79,7 @@ const Users: React.FC<UsersProps> = ({ users }) => {
                         alt={user.name + " image"}
                       />
                       <div className="ps-3">
-                        <Link href={`users/profile?id=${user.id}`}>
+                        <Link href={`users/profile?id=${userId}`}>
                           <div className="font-normal">{user.name}</div>
                         </Link>
                       </div>
@@ -87,7 +88,7 @@ const Users: React.FC<UsersProps> = ({ users }) => {
                     <td className="px-6 py-4">
                       {user.agency + " " + user.position}
                     </td>
-                    <td className="px-6 py-4">{user.role.name}</td>
+                    <td className="px-6 py-4">{user?.role?.name}</td>
                     <td className="px-6 py-4">{user.email}</td>
                     <td className="px-6 py-4">{user.phone}</td>
 

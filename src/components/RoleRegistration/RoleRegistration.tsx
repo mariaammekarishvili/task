@@ -1,8 +1,8 @@
-// components/UserRegistrationForm.tsx
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+
 import Button from "../Button/Button";
-import { addRole, addUser } from "@/app/api/v1/apiClient";
+import { addRole, } from "@/app/api/v1/apiClient";
 import { roleValidationSchema } from "@/util/validationSchema";
 
 const RoleRegistrationForm: React.FC = () => {
@@ -103,7 +103,7 @@ const RoleRegistrationForm: React.FC = () => {
                           )
                         );
                       }
-                      permission.value = isChecked; // Update value property
+                      permission.value = isChecked; 
                     }}
                   />
                   {permission.name}

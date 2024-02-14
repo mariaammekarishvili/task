@@ -42,7 +42,7 @@ const UserProfile: React.FC<ProfileProp> = ({ user }) => {
                 {user?.name} {user?.lastName}
               </p>
               <div className="flex min-w-30 h-7 px-2 bg-[#F5F8FF] align-middle items-center rounded-lg justify-center">
-                {user?.role.name} <GoPencil className="ml-2" />
+                {user?.role.name}
               </div>
             </div>
           </div>

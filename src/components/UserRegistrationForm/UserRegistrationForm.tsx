@@ -21,8 +21,8 @@ const UserRegistrationForm: React.FC = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           addUser(values);
+  
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
         }}

@@ -54,18 +54,127 @@
       "id": 4
     },
     {
-      "name": "John",
-      "lastName": "Doe",
-      "agency": "ABC Agency",
-      "position": "Manager",
-      "email": "john.d99oe@example.com",
-      "phone": "123-456-7890",
-      "createdAt": "2024-01-08T17:23:37.895Z",
-      "updatedAt": "2024-01-08T17:23:37.895Z",
-      "role": 1,
-      "file": "/mnt/D/projects/senior_example/example/public/uploads/download.jpeg",
-      "password": "$2b$10$Fx4LZNirObHYSZQzJ6EH/uXogaCgLT32Eo78xlW4yH8fwrmVoXg2O",
+      "name": "mari",
+      "email": "mari@gmail.com",
+      "password": "$2b$10$HvLAgh03B.sc/z/QLTZ4QezvfUi.GY/MMPdN6DbabcjTihb.K7b26",
+      "createdAt": "2024-02-14T21:53:12.144Z",
+      "updatedAt": "2024-02-14T21:53:12.144Z",
       "id": 5
+    },
+    {
+      "name": "mari",
+      "email": "mari@gmail.com",
+      "role": "admin",
+      "password": "$2b$10$wSdrOfmnGgiGONlCAjpIYe53rLVhg7IHRw201kH/VL1RdUH1ys6A.",
+      "createdAt": "2024-02-14T21:53:26.250Z",
+      "updatedAt": "2024-02-14T21:53:26.250Z",
+      "id": 6
+    },
+    {
+      "name": "mari",
+      "email": "mari@gmail.com",
+      "role": "admin",
+      "position": "m",
+      "password": "$2b$10$22T4XBC5M7elLPWokAphBeB1A6enYoSqhqAo0D0o655sfBoSZYCHW",
+      "createdAt": "2024-02-14T21:53:40.124Z",
+      "updatedAt": "2024-02-14T21:53:40.124Z",
+      "id": 7
+    },
+    {
+      "name": "mari",
+      "email": [
+        "mari@gmail.com",
+        "m@gmail.com"
+      ],
+      "role": "admin",
+      "position": "m",
+      "phone": "123456789",
+      "agency": "m",
+      "password": "$2b$10$mc.JvUUGPPn4EFuL3eo/AeMjFbaS924FmIAEP6sJVjJlo4aEeqRka",
+      "createdAt": "2024-02-14T21:54:10.851Z",
+      "updatedAt": "2024-02-14T21:54:10.851Z",
+      "id": 8
+    },
+    {
+      "name": "mari",
+      "email": [
+        "mari@gmail.com",
+        "m@gmail.com"
+      ],
+      "role": "admin",
+      "position": "m",
+      "phone": "123456789",
+      "agency": "m",
+      "lastName": "m",
+      "password": "$2b$10$Q4Ru3xwh7ANcg8PCo847Z.dvASlqNXGqvnDO/m9SDP0iCPMadtoZq",
+      "createdAt": "2024-02-14T21:54:24.391Z",
+      "updatedAt": "2024-02-14T21:54:24.391Z",
+      "id": 9
+    },
+    {
+      "name": "Mariam Mekarishvili",
+      "lastName": "Mariam",
+      "role": "dmin",
+      "position": "m",
+      "email": "mariam.mekarishvili@gmail.com",
+      "phone": "593416316",
+      "agency": "mm",
+      "password": "$2b$10$wivMzA1CQf3Kd72mmkVfleN/AjOJ4nHiS0oPx3O/G24kvPFlk8etm",
+      "createdAt": "2024-02-14T22:05:00.531Z",
+      "updatedAt": "2024-02-14T22:05:00.531Z",
+      "id": 10
+    },
+    {
+      "name": "m",
+      "lastName": "Mariam",
+      "role": "m",
+      "position": "მასწავლებელი",
+      "email": "mariam.mekarishvili@gmail.com",
+      "phone": "593416316",
+      "agency": "მმმ",
+      "password": "$2b$10$nnkqrZur9xS7XyUEqCf5beWSMtPGqc1kJ.Nr3UPPEO33rRXF9DNJG",
+      "createdAt": "2024-02-14T22:12:48.715Z",
+      "updatedAt": "2024-02-14T22:12:48.715Z",
+      "id": 11
+    },
+    {
+      "name": "mariam",
+      "lastName": "Mariam",
+      "role": "dmin",
+      "position": "მასწავლებელი",
+      "email": "mariam.mekarishvili@gmail.com",
+      "phone": "593416316",
+      "agency": "mm",
+      "password": "$2b$10$M23VynlAMVZ7btZ.avMpLu6dXyrpXkj3xwTdKIvY3JK/UbxQVRRhu",
+      "createdAt": "2024-02-14T22:13:08.201Z",
+      "updatedAt": "2024-02-14T22:13:08.201Z",
+      "id": 12
+    },
+    {
+      "name": "mariam",
+      "lastName": "Mariam",
+      "role": "dmin",
+      "position": "მასწავლებელი",
+      "email": "mariam.mekarishvili@gmail.com",
+      "phone": "593416316",
+      "agency": "mm",
+      "password": "$2b$10$OSy1upbIdE8.nujVJx/lEuLzWQ2Q42Of6ud8QCSV9GFxRkQ5RQXuO",
+      "createdAt": "2024-02-14T22:13:12.247Z",
+      "updatedAt": "2024-02-14T22:13:12.247Z",
+      "id": 13
+    },
+    {
+      "name": "m",
+      "lastName": "m",
+      "role": "m",
+      "position": "m",
+      "email": "mariam.mekarishvili@gmail.com",
+      "phone": "593416316",
+      "agency": "m",
+      "password": "$2b$10$ClaAmK.KlXdn40mA.mOf9.5Su7O.Rg3gw0/K6.k1.3lSJBi.nJWHy",
+      "createdAt": "2024-02-14T22:16:46.273Z",
+      "updatedAt": "2024-02-14T22:16:46.273Z",
+      "id": 14
     }
   ],
   "roles": [

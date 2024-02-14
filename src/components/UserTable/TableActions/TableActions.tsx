@@ -73,7 +73,7 @@ const TableActions: React.FC<ActionProps> = ({ id, isRole }) => {
               className="w-60 cursor-pointer h-[39px] text-[#7A0000] hover:bg-red-100 text-sm px-4 py-2.5 rounded-lg flex items-center"
             >
               <RiDeleteBin7Line color="#7A0000" className="mr-2" />{" "}
-              {isRole ? "როლის" : "მომხმარებლის"}
+              {isRole ? "როლის " : "მომხმარებლის "}
               წაშლა
             </div>
           )}
