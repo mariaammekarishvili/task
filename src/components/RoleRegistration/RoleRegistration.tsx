@@ -8,10 +8,10 @@ import { roleValidationSchema } from "@/util/validationSchema";
 const RoleRegistrationForm: React.FC = () => {
   const permissionsData = {
     users: [
-      { id: 1, key: "add", name: "მომხმარებლის დამატება" },
-      { id: 2, key: "delete", name: "მომხმარებლის წაშლა" },
-      { id: 3, key: "update", name: "მომხმარებლის რედაქტირება" },
-      { id: 4, key: "readOnly", name: "მხოლოდ დათვალიერება" },
+      { id: 1, key: "add", name: "მომხმარებლის დამატება", value: false },
+      { id: 2, key: "delete", name: "მომხმარებლის წაშლა", value: false },
+      { id: 3, key: "update", name: "მომხმარებლის რედაქტირება", value: false },
+      { id: 4, key: "readOnly", name: "მხოლოდ დათვალიერება", value: false },
     ],
   };
 
@@ -22,18 +22,14 @@ const RoleRegistrationForm: React.FC = () => {
           name: "",
           description: "",
           permissions: {
-            users: {
-              add: false,
-              delete: false,
-              update: false,
-              readOnly: false,
-            },
+            users: [4],
+            tabs: [],
           },
         }}
         validationSchema={roleValidationSchema}
         onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
-          addRole(values)
+          console.log(values);
+          addRole(values);
           setSubmitting(false);
         }}
       >
@@ -84,20 +80,39 @@ const RoleRegistrationForm: React.FC = () => {
               </label>
               <label></label>
               {permissionsData.users.map((permission) => (
-                <label key={permission.key}>
+                <label key={permission.id}>
                   <Field
                     type="checkbox"
-                    name={`permissions.users.${permission.key}`}
+                    name={`permissions.users[${permission.id}]`}
+                    checked={formik.values.permissions.users.includes(
+                      permission.id
+                    )}
                     className="mr-2"
+                    onChange={(e: any) => {
+                      const isChecked = e.target.checked;
+                      if (isChecked) {
+                        formik.setFieldValue("permissions.users", [
+                          ...formik.values.permissions.users,
+                          permission.id,
+                        ]);
+                      } else {
+                        formik.setFieldValue(
+                          "permissions.users",
+                          formik.values.permissions.users.filter(
+                            (id) => id !== permission.id
+                          )
+                        );
+                      }
+                      permission.value = isChecked; // Update value property
+                    }}
                   />
                   {permission.name}
                 </label>
               ))}
             </div>
             <div className="relative left-[-20px] mix-h-[80px] flex w-[calc(100%+42px)] justify-end p-4 md:p-5 rounded-b border-t border-[#C9D0E1]">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Submit
-              </button>            </div>
+            <Button type="primary">შენახვა</Button>
+            </div>
           </Form>
         )}
       </Formik>

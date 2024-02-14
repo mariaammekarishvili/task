@@ -1,38 +1,27 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const validationSchema = Yup.object({
-  name: Yup.string()
-    .required('Name is required'),
-  lastName: Yup.string()
-    .required('Last name is required'),
-  agency: Yup.string()
-    .required('Agency is required'),
-  position: Yup.string()
-    .required('Position is required'),
+  name: Yup.string().required("Name is required"),
+  lastName: Yup.string().required("Last name is required"),
+  agency: Yup.string().required("Agency is required"),
+  position: Yup.string().required("Position is required"),
   email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
+    .email("Invalid email address")
+    .required("Email is required"),
   phone: Yup.string()
     .matches(/^[0-9]+$/, "Phone number must be only digits")
-    .min(10, 'Phone number must be at least 10 digits long')
-    .required('Phone number is required'),
-  createdAt: Yup.string()
-    .required('Creation date is required'),
-  updatedAt: Yup.string()
-    .required('Update date is required'),
+    .min(10, "Phone number must be at least 10 digits long")
+    .required("Phone number is required"),
+  createdAt: Yup.string().required("Creation date is required"),
+  updatedAt: Yup.string().required("Update date is required"),
 });
 
 export default validationSchema;
 
-
 export const roleValidationSchema = Yup.object({
-  name: Yup.string().required('Name is required')  ,
+  name: Yup.string().required("Name is required"),
   description: Yup.string(),
   permissions: Yup.object({
-    users: Yup.object().shape({
-      add: Yup.boolean(),
-      delete: Yup.boolean(),
-      update: Yup.boolean(),
-      readOnly: Yup.boolean(),
-    }),})
+    users: Yup.array(),
+  }),
 });

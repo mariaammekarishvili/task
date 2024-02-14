@@ -7,7 +7,7 @@ import { SetStateAction } from "react";
 export const API = "http://localhost:3000/api/v1";
 const cookies = parseCookies();
 const authToken = cookies.token;
-const token = authToken.replace('token=', '');
+const token = authToken?.replace('token=', '');
 
 function setTokenInCookie(token: string) {
   setCookie(null, "token", token, {
