@@ -1,9 +1,11 @@
 import React, { ReactNode, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useUser } from "@/contexts/UserContext";
 import profilePic from "../../public/uploads/user-img.jpg";
+import Toasts from "./Toast/Toast";
 interface WrapperProps {
   children?: ReactNode;
   title?: string;
@@ -17,6 +19,8 @@ const Layout: React.FC<WrapperProps> = ({
   const user = userRef.current
 
   return (
+    <>
+    <Toasts />
     <div className="p-2.5 bg-[#F4F5F9] h-[100vh] w-full">
       <nav className="top-2.5 left-[85px] z-50 w-full pl-[85px]">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -161,6 +165,7 @@ const Layout: React.FC<WrapperProps> = ({
         </div>
       </div>
     </div>
+    </>
   );
 };
 

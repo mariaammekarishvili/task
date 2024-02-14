@@ -175,6 +175,19 @@
       "createdAt": "2024-02-14T22:16:46.273Z",
       "updatedAt": "2024-02-14T22:16:46.273Z",
       "id": 14
+    },
+    {
+      "name": "mariam",
+      "lastName": "Mariam",
+      "role": "dmin",
+      "position": "m",
+      "email": "mariam.mekarishvili@gmail.com",
+      "phone": "593416316",
+      "agency": "მმმ",
+      "password": "$2b$10$cT44ZqGLanEksAoN2p8zOufY87xtXPqyC1oALcRf8/FTIiQmis0mK",
+      "createdAt": "2024-02-14T22:21:17.662Z",
+      "updatedAt": "2024-02-14T22:21:17.662Z",
+      "id": 15
     }
   ],
   "roles": [

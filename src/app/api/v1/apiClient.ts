@@ -71,6 +71,7 @@ export async function addUser(userData: any) {
     return response.data; // Optionally return response data
   } catch (error) {
     console.error("Error adding user:", error);
+    toast.error('დაფიქსირდა შეცდომა!!')
     throw error; // Rethrow the error to handle it in the calling code
   }
 }
@@ -83,14 +84,15 @@ export async function addRole(data: any) {
       },
     });
     console.log("Role added successfully:", response.data);
+    toast.success('როლი წარმატებით დაემატა')
   } catch (error) {
     console.error("Error adding role:", error);
+    toast.error('დაფიქსირდა შეცდომა!!')
   }
 }
 export async function deleteUser(
   userId: number,
   setOpenModal: (arg0: boolean) => void,
-  setResponsType: (arg0: "error" | "success" | null) => void
 ) {
   try {
     const response = await axios.delete(`${API}/users/delete/${userId}`, {
@@ -99,23 +101,18 @@ export async function deleteUser(
       },
     });
     setOpenModal(false);
-    setResponsType("success");
     console.log("User deleted successfully:", response.data);
+    toast.success('მომხმარებელი წარმატებით წაიშალა')
   } catch (error) {
     console.error("Error deleting user:", error);
     setOpenModal(false);
-    setResponsType("error");
+    toast.error('დაფიქსირდა შეცდომა!!')
   }
-
-  setTimeout(() => {
-    setResponsType(null);
-  }, 2000);
 }
 
 export async function deleteRole(
   roleId: number,
   setOpenModal: (arg0: boolean) => void,
-  setResponsType: (arg0: "error" | "success" | null) => void
 ) {
   try {
     const response = await axios.delete(`${API}/role/delete/${roleId}`, {
@@ -124,15 +121,11 @@ export async function deleteRole(
       },
     });
     setOpenModal(false);
-    setResponsType("success");
-    console.log("User deleted successfully:", response.data);
+    console.log("როლი deleted successfully:", response.data);
+    toast.success('როლი წარმატებით წაიშალა')
   } catch (error) {
     console.error("Error deleting user:", error);
     setOpenModal(false);
-    setResponsType("error");
+    toast.error('დაფიქსირდა შეცდომა!!')
   }
-
-  setTimeout(() => {
-    setResponsType(null);
-  }, 2000);
 }

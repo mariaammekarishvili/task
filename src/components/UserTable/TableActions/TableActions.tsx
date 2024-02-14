@@ -16,33 +16,11 @@ interface ActionProps {
 
 const TableActions: React.FC<ActionProps> = ({ id, isRole }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [responsType, setResponsType] = useState<"success" | "error" | null>(
-    null
-  );
   const { userRef } = useUser();
   const userRole = userRef.current?.role.name;
 
   return (
     <>
-      {responsType === "success" ? (
-        <div
-          className="fixed p-4 mb-10 right-4 top-8 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-          role="alert"
-        >
-          <span className="font-medium">
-            {isRole ? "როლი" : "იუზერი"} წარმატებით წაიშალა
-          </span>
-        </div>
-      ) : responsType === "error" ? (
-        <div
-          className="fixed p-4 mb-4 right-4 top-10 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-          role="alert"
-        >
-          <span className="font-medium">დაფიქსირდა შეცდომა</span>
-        </div>
-      ) : (
-        <></>
-      )}
       <div className="h-4 w-4 " data-tooltip-id="my-tooltip-1">
         <HiOutlineDotsVertical className="cursor-pointer" />
       </div>
@@ -84,8 +62,8 @@ const TableActions: React.FC<ActionProps> = ({ id, isRole }) => {
         onClose={() => setOpenModal(false)}
         onSubmit={() => {
           isRole
-            ? deleteRole(id, setOpenModal, setResponsType)
-            : deleteUser(id, setOpenModal, setResponsType);
+            ? deleteRole(id, setOpenModal)
+            : deleteUser(id, setOpenModal);
         }}
       />
     </>

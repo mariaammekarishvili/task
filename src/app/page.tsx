@@ -3,8 +3,7 @@
 import { useLayoutEffect } from "react";
 import { parseCookies } from "nookies";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import Users from "@/pages/users";
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
   return (
     <>
       <Users />
-      <ToastContainer />
     </>
   );
 }
