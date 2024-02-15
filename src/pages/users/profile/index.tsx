@@ -25,7 +25,7 @@ interface ProfileProp {
 }
 
 const UserProfile: React.FC<ProfileProp> = ({ user }) => {
-  console.log(user);
+
   return (
     <Layout title="პროფილი">
       <div className="w-full mx-auto overflow-hidden	">

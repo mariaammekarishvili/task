@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import { parseCookies } from "nookies";
 import axios from "axios";
@@ -23,6 +23,7 @@ const Users: React.FC<UsersProps> = ({ users }) => {
   const cookies = parseCookies();
   const router = useRouter();
   const userId = cookies.userId;
+  const [client, setClient] = useState(false);
 
   useLayoutEffect(() => {
     if (!cookies.token) {
@@ -30,7 +31,10 @@ const Users: React.FC<UsersProps> = ({ users }) => {
     } else {
       router.push("/users");
     }
+    setClient(true);
   }, []);
+
+  if (!client) return;
 
   return (
     <Layout title="მომხმარებლები">
@@ -122,7 +126,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         users: response.data.data,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to fetch users", error);
     return {
       props: {
@@ -133,3 +137,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default Users;
+function removeCookie(arg0: string) {
+  throw new Error("Function not implemented.");
+}
