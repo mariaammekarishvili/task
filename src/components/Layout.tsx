@@ -39,7 +39,7 @@ const Layout: React.FC<WrapperProps> = ({
                     <Link href={`/users/profile?id=${user?.id}`}>
                       <button
                         type="button"
-                        className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                        className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
                         aria-expanded="false"
                         data-dropdown-toggle="dropdown-user"
                       >
@@ -61,10 +61,10 @@ const Layout: React.FC<WrapperProps> = ({
 
         <aside
           id="logo-sidebar"
-          className="fixed top-2.5 left-2.5 rounded-xl z-40 w-[60px] h-[98vh] pt-5 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+          className="fixed top-2.5 left-2.5 rounded-xl z-40 w-[60px] h-[98vh] pt-5 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0"
           aria-label="Sidebar"
         >
-          <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+          <div className="h-full px-3 pb-4 overflow-y-auto bg-white ">
             <ul className="space-y-2 font-medium">
               <Link href={"/users"}>
                 <li className="mb-16">

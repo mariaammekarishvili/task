@@ -4,7 +4,7 @@ import { useLayoutEffect } from "react";
 import { parseCookies } from "nookies";
 import { useRouter } from "next/navigation";
 
-import Users from "@/pages/users";
+import LogIn from "@/pages/logIn";
 
 export default function Home() {
   const cookies = parseCookies();
@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <Users />
+      <LogIn />
     </>
   );
 }
