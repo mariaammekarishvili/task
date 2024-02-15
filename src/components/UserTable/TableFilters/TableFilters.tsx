@@ -27,7 +27,7 @@ function TableFilters() {
         title={"მომხმარებლის დამატება"}
         onClose={() => setIsModalOpen(false)}
       >
-        <UserRegistrationForm setModalOpen={setIsModalOpen}/>
+        <UserRegistrationForm setModalOpen={setIsModalOpen} />
       </Modal>
     </>
   );

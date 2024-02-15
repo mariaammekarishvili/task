@@ -4,11 +4,11 @@ import validationSchema from "@/util/validationSchema";
 import Button from "../Button/Button";
 import { addUser } from "@/app/api/v1/apiClient";
 
-interface FormProps{
-  setModalOpen: any
+interface FormProps {
+  setModalOpen: any;
 }
 
-const UserRegistrationForm: React.FC<FormProps> = ({setModalOpen}) => {
+const UserRegistrationForm: React.FC<FormProps> = ({ setModalOpen }) => {
   return (
     <div className="max-w-[751px] mx-auto">
       <Formik
@@ -27,7 +27,7 @@ const UserRegistrationForm: React.FC<FormProps> = ({setModalOpen}) => {
 
           setTimeout(() => {
             setSubmitting(false);
-            setModalOpen(false)
+            setModalOpen(false);
           }, 400);
         }}
       >

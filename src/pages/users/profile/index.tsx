@@ -6,11 +6,7 @@ import { parseCookies } from "nookies";
 import axios from "axios";
 import { format } from "date-fns";
 import { BiBuilding, BiPhone } from "react-icons/bi";
-import {
-  GoBriefcase,
-  GoMail,
-  GoPerson,
-} from "react-icons/go";
+import { GoBriefcase, GoMail, GoPerson } from "react-icons/go";
 
 import Layout from "@/components/Layout";
 import Loading from "@/components/Loading/Loading";
@@ -23,7 +19,6 @@ interface ProfileProp {
 }
 
 const UserProfile: React.FC<ProfileProp> = ({ user }) => {
-
   return (
     <Layout title="პროფილი">
       <div className="w-full mx-auto overflow-hidden	">

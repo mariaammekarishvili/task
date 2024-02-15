@@ -4,11 +4,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Button from "../Button/Button";
 import { addRole } from "@/app/api/v1/apiClient";
 import { roleValidationSchema } from "@/util/validationSchema";
-interface FormProps{
-  setModalOpen: any
+interface FormProps {
+  setModalOpen: any;
 }
 
-const RoleRegistrationForm: React.FC<FormProps> = ({setModalOpen}) => {
+const RoleRegistrationForm: React.FC<FormProps> = ({ setModalOpen }) => {
   const permissionsData = {
     users: [
       { id: 1, key: "add", name: "მომხმარებლის დამატება", value: false },
@@ -32,10 +32,10 @@ const RoleRegistrationForm: React.FC<FormProps> = ({setModalOpen}) => {
         validationSchema={roleValidationSchema}
         onSubmit={(values, { setSubmitting }) => {
           addRole(values);
-          
+
           setTimeout(() => {
             setSubmitting(false);
-            setModalOpen(false)
+            setModalOpen(false);
           }, 400);
         }}
       >

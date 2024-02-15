@@ -19,7 +19,7 @@ const UserContext = createContext<UserContextType>({
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const userRef = useRef<User | null>(null); 
+  const userRef = useRef<User | null>(null);
 
   return (
     <UserContext.Provider value={{ userRef }}>{children}</UserContext.Provider>
