@@ -38,17 +38,17 @@ export async function GET(req: Request) {
     }
     roles.data.forEach((role: any) => {
       role.permissions.users = permissions.data.users.filter(
-        (permission: any) => role?.permissions?.users?.includes(permission.id)
+        (permission: any) => role?.permissions?.users?.includes(permission.id),
       );
     });
     roles.data.forEach((role: any) => {
       role.permissions.tabs = permissions.data.tabs.filter((permission: any) =>
-        role?.permissions?.tabs?.includes(permission.id)
+        role?.permissions?.tabs?.includes(permission.id),
       );
     });
     roles.data.forEach((role: any) => {
       role.permissions.roles = permissions.data.roles.filter(
-        (permission: any) => role?.permissions?.roles?.includes(permission.id)
+        (permission: any) => role?.permissions?.roles?.includes(permission.id),
       );
     });
     users.data.forEach((user: any) => {

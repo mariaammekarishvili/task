@@ -14,17 +14,19 @@ export async function POST(request: Request) {
       const roles = await axiosInstance.get("roles");
       roles.data.forEach((role: any) => {
         role.permissions.users = permissions?.data.users.filter(
-          (permission: any) => role?.permissions?.users?.includes(permission.id)
+          (permission: any) =>
+            role?.permissions?.users?.includes(permission.id),
         );
       });
       roles.data.forEach((role: any) => {
         role.permissions.tabs = permissions?.data?.tabs?.filter(
-          (permission: any) => role?.permissions?.tabs?.includes(permission.id)
+          (permission: any) => role?.permissions?.tabs?.includes(permission.id),
         );
       });
       roles.data.forEach((role: any) => {
         role.permissions.roles = permissions.data.roles.filter(
-          (permission: any) => role?.permissions?.roles?.includes(permission.id)
+          (permission: any) =>
+            role?.permissions?.roles?.includes(permission.id),
         );
       });
       user.data.forEach((user: any) => {
@@ -37,7 +39,7 @@ export async function POST(request: Request) {
         JSON.stringify({ success: false, error: "password is not correct" }),
         {
           headers: { "content-type": "application/json" },
-        }
+        },
       );
     }
   } catch (e: any) {

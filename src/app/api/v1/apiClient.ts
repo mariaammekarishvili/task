@@ -27,8 +27,8 @@ function setUserId(token: string) {
 export const logIn = async (
   values: { username: string; password: string },
   setUser: (
-    value: User | null | ((prevState: User | null) => User | null)
-  ) => void
+    value: User | null | ((prevState: User | null) => User | null),
+  ) => void,
 ) => {
   try {
     const response = await axios.post(`${API}/sign-in`, {
@@ -67,11 +67,11 @@ export async function addUser(userData: any) {
     });
 
     console.log("User added successfully:", response.data);
-    toast.success('მომხმარებელი წარმატებით დაემატა')
+    toast.success("მომხმარებელი წარმატებით დაემატა");
     return response.data; // Optionally return response data
   } catch (error) {
     console.error("Error adding user:", error);
-    toast.error('დაფიქსირდა შეცდომა!!')
+    toast.error("დაფიქსირდა შეცდომა!!");
     throw error; // Rethrow the error to handle it in the calling code
   }
 }
@@ -84,10 +84,10 @@ export async function addRole(data: any) {
       },
     });
     console.log("Role added successfully:", response.data);
-    toast.success('როლი წარმატებით დაემატა')
+    toast.success("როლი წარმატებით დაემატა");
   } catch (error) {
     console.error("Error adding role:", error);
-    toast.error('დაფიქსირდა შეცდომა!!')
+    toast.error("დაფიქსირდა შეცდომა!!");
   }
 }
 export async function deleteUser(
@@ -102,11 +102,11 @@ export async function deleteUser(
     });
     setOpenModal(false);
     console.log("User deleted successfully:", response.data);
-    toast.success('მომხმარებელი წარმატებით წაიშალა')
+    toast.success("მომხმარებელი წარმატებით წაიშალა");
   } catch (error) {
     console.error("Error deleting user:", error);
     setOpenModal(false);
-    toast.error('დაფიქსირდა შეცდომა!!')
+    toast.error("დაფიქსირდა შეცდომა!!");
   }
 }
 
@@ -122,10 +122,10 @@ export async function deleteRole(
     });
     setOpenModal(false);
     console.log("როლი deleted successfully:", response.data);
-    toast.success('როლი წარმატებით წაიშალა')
+    toast.success("როლი წარმატებით წაიშალა");
   } catch (error) {
     console.error("Error deleting user:", error);
     setOpenModal(false);
-    toast.error('დაფიქსირდა შეცდომა!!')
+    toast.error("დაფიქსირდა შეცდომა!!");
   }
 }

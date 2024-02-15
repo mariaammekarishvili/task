@@ -12,7 +12,6 @@ const SubmitionModal: React.FC<SubmissionModalProps> = ({
   onClose,
   onSubmit,
 }) => {
-
   if (!isOpen) return;
 
   return (

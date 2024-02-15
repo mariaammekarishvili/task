@@ -61,9 +61,7 @@ const TableActions: React.FC<ActionProps> = ({ id, isRole }) => {
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
         onSubmit={() => {
-          isRole
-            ? deleteRole(id, setOpenModal)
-            : deleteUser(id, setOpenModal);
+          isRole ? deleteRole(id, setOpenModal) : deleteUser(id, setOpenModal);
         }}
       />
     </>

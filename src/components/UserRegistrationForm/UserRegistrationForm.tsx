@@ -5,7 +5,7 @@ import validationSchema from "@/util/validationSchema";
 import Button from "../Button/Button";
 import { addUser } from "@/app/api/v1/apiClient";
 
-const UserRegistrationForm: React.FC = () => {  
+const UserRegistrationForm: React.FC = () => {
   return (
     <div className="max-w-[751px] mx-auto">
       <Formik
@@ -16,12 +16,12 @@ const UserRegistrationForm: React.FC = () => {
           position: "",
           email: "",
           phone: "",
-          agency:'',
+          agency: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
           addUser(values);
-  
+
           setTimeout(() => {
             setSubmitting(false);
           }, 400);

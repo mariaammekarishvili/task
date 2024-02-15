@@ -1,13 +1,12 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/pages/logIn/index.tsx',
-    './src/**/**/*'
-
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/logIn/index.tsx",
+    "./src/**/**/*",
   ],
   theme: {
     // extend: {
@@ -19,6 +18,6 @@ const config: Config = {
     // },
   },
   plugins: [],
-  darkMode: 'class'
-}
-export default config
+  darkMode: "class",
+};
+export default config;

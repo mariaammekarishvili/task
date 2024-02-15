@@ -2,7 +2,7 @@ export const response = (
   message: string,
   success: boolean,
   status: any,
-  data?: any
+  data?: any,
 ) => {
   return new Response(
     JSON.stringify({
@@ -14,12 +14,12 @@ export const response = (
     {
       headers: { "Content-Type": "application/json" },
       status: status,
-    }
+    },
   );
 };
 
 export const formDataToJson = (
-  formData: FormData
+  formData: FormData,
 ): Record<string, string | string[]> => {
   const object: Record<string, string | string[]> = {};
   formData.forEach((value: any, key: any) => {

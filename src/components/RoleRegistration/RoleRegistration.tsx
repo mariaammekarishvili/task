@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import Button from "../Button/Button";
-import { addRole, } from "@/app/api/v1/apiClient";
+import { addRole } from "@/app/api/v1/apiClient";
 import { roleValidationSchema } from "@/util/validationSchema";
 
 const RoleRegistrationForm: React.FC = () => {
@@ -85,7 +85,7 @@ const RoleRegistrationForm: React.FC = () => {
                     type="checkbox"
                     name={`permissions.users[${permission.id}]`}
                     checked={formik.values.permissions.users.includes(
-                      permission.id
+                      permission.id,
                     )}
                     className="mr-2"
                     onChange={(e: any) => {
@@ -99,11 +99,11 @@ const RoleRegistrationForm: React.FC = () => {
                         formik.setFieldValue(
                           "permissions.users",
                           formik.values.permissions.users.filter(
-                            (id) => id !== permission.id
-                          )
+                            (id) => id !== permission.id,
+                          ),
                         );
                       }
-                      permission.value = isChecked; 
+                      permission.value = isChecked;
                     }}
                   />
                   {permission.name}
@@ -111,7 +111,7 @@ const RoleRegistrationForm: React.FC = () => {
               ))}
             </div>
             <div className="relative left-[-20px] mix-h-[80px] flex w-[calc(100%+42px)] justify-end p-4 md:p-5 rounded-b border-t border-[#C9D0E1]">
-            <Button type="primary">შენახვა</Button>
+              <Button type="primary">შენახვა</Button>
             </div>
           </Form>
         )}

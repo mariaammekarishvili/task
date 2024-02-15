@@ -21,12 +21,12 @@ export async function GET(req: Request, res: Response) {
 
     roles.data.forEach((role: any) => {
       role.permissions.users = permissions.data.users.filter(
-        (permission: any) => role.permissions.users.includes(permission.id)
+        (permission: any) => role.permissions.users.includes(permission.id),
       );
     });
     roles.data.forEach((role: any) => {
       role.permissions.tabs = permissions.data.tabs.filter((permission: any) =>
-        role.permissions.tabs.includes(permission.id)
+        role.permissions.tabs.includes(permission.id),
       );
     });
 

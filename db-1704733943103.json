@@ -18,37 +18,17 @@
       "name": "administrator",
       "description": "main",
       "permissions": {
-        "users": [
-          1,
-          2,
-          3,
-          4
-        ],
-        "tabs": [
-          1,
-          2,
-          3
-        ],
-        "roles": [
-          1,
-          2,
-          3
-        ]
+        "users": [1, 2, 3, 4],
+        "tabs": [1, 2, 3],
+        "roles": [1, 2, 3]
       }
     },
     {
       "name": "moderator",
       "description": "moderator",
       "permissions": {
-        "users": [
-          1,
-          2
-        ],
-        "tabs": [
-          1,
-          2,
-          3
-        ]
+        "users": [1, 2],
+        "tabs": [1, 2, 3]
       },
       "updatedAt": "2024-01-08T16:13:42.801Z",
       "id": 2
@@ -59,9 +39,7 @@
       "description": "user",
       "permissions": {
         "users": [],
-        "tabs": [
-          2
-        ],
+        "tabs": [2],
         "roles": []
       }
     }

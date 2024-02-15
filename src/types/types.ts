@@ -26,7 +26,7 @@ export type User = {
   password: string;
   role: Role;
   file?: string;
-  token?: string
+  token?: string;
   updatedAt?: string;
   createdAt?: string;
 };

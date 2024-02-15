@@ -21,12 +21,12 @@ export async function GET(req: Request, { params }: any) {
     const permissions = await axiosInstance.get("permissions");
     role.data.forEach((role: any) => {
       role.permissions.users = permissions.data.users.filter(
-        (permission: any) => role.permissions.users.includes(permission.id)
+        (permission: any) => role.permissions.users.includes(permission.id),
       );
     });
     role.data.forEach((role: any) => {
       role.permissions.tabs = permissions.data.tabs.filter((permission: any) =>
-        role.permissions.tabs.includes(permission.id)
+        role.permissions.tabs.includes(permission.id),
       );
     });
     return response("", true, 200, role.data);

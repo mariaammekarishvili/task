@@ -17,7 +17,7 @@ export async function hashPassword(password: string) {
 
 export async function verifyPassword(
   userPassword: string,
-  hashedPassword: string
+  hashedPassword: string,
 ) {
   const match = await bcrypt.compare(userPassword, hashedPassword);
   return match;
@@ -62,7 +62,7 @@ export const verifyToken = async (token: string, required_permission?: any) => {
       case "object":
         hasPermission = includesSome(
           role.data[0].permissions[required_permission.module],
-          required_permission.permission
+          required_permission.permission,
         );
         break;
       case "string":
