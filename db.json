@@ -212,6 +212,52 @@
       "createdAt": "2024-02-14T21:26:13.300Z",
       "updatedAt": "2024-02-14T21:26:13.300Z",
       "id": 6
+    },
+    {
+      "name": "user",
+      "description": "mm",
+      "permissions": {
+        "users": [
+          4,
+          1,
+          3,
+          2
+        ],
+        "tabs": []
+      },
+      "createdAt": "2024-02-15T08:38:21.707Z",
+      "updatedAt": "2024-02-15T08:38:21.707Z",
+      "id": 7
+    },
+    {
+      "name": "role 1",
+      "description": "desc 1",
+      "permissions": {
+        "users": [
+          4,
+          3,
+          2
+        ],
+        "tabs": []
+      },
+      "createdAt": "2024-02-15T08:40:32.344Z",
+      "updatedAt": "2024-02-15T08:40:32.344Z",
+      "id": 8
+    },
+    {
+      "name": "mariam",
+      "description": "m",
+      "permissions": {
+        "users": [
+          4,
+          1,
+          3
+        ],
+        "tabs": []
+      },
+      "createdAt": "2024-02-15T08:40:56.888Z",
+      "updatedAt": "2024-02-15T08:40:56.888Z",
+      "id": 9
     }
   ],
   "permissions": {

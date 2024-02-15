@@ -137,6 +137,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default Users;
-function removeCookie(arg0: string) {
-  throw new Error("Function not implemented.");
-}

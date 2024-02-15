@@ -42,7 +42,7 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
         title={"მომხმარებლის დამატება"}
         onClose={() => setIsModalOpen(false)}
       >
-        <RoleRegistrationForm />
+        <RoleRegistrationForm setModalOpen={setIsModalOpen}/>
       </Modal>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className=" text-[14px] bg-white font-normal text-[#636971] dark:bg-gray-700 dark:text-gray-400">
@@ -89,7 +89,6 @@ const Roles: React.FC<RolesProps> = ({ roles }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query } = context;
 
   try {
     const cookies = parseCookies(context);

@@ -1,4 +1,3 @@
-// components/UserRegistrationForm.tsx
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validationSchema from "@/util/validationSchema";

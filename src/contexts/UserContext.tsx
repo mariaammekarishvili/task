@@ -16,11 +16,10 @@ const UserContext = createContext<UserContextType>({
   userRef: { current: null },
 });
 
-// UserProvider component
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const userRef = useRef<User | null>(null); // Initialize user state with null
+  const userRef = useRef<User | null>(null); 
 
   return (
     <UserContext.Provider value={{ userRef }}>{children}</UserContext.Provider>

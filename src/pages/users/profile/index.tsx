@@ -9,9 +9,7 @@ import { BiBuilding, BiPhone } from "react-icons/bi";
 import {
   GoBriefcase,
   GoMail,
-  GoPencil,
   GoPerson,
-  GoProject,
 } from "react-icons/go";
 
 import Layout from "@/components/Layout";
@@ -47,7 +45,7 @@ const UserProfile: React.FC<ProfileProp> = ({ user }) => {
             </div>
           </div>
           <div className="flex flex-wrap mx-4">
-            {/* First Column */}
+            {/* #1 column */}
             <div className="w-full md:w-1/2 px-4">
               <div className="mb-2">
                 <h4 className="text-[12px] h-9 px-3 py-2.5 text-[#919191] uppercase">
@@ -97,7 +95,7 @@ const UserProfile: React.FC<ProfileProp> = ({ user }) => {
               </div>
             </div>
 
-            {/* Second Column */}
+            {/* #2 column */}
             <div className="w-full md:w-1/2 px-4 max-h-76">
               <h4 className="text-[12px] h-9 px-3 py-2.5 text-[#919191] uppercase">
                 ისტორია
